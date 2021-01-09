@@ -1,0 +1,75 @@
+{%extends 'base.html'%}
+
+{%block title%}The Boggle Board{%endblock%}
+{%block content%}
+    
+<!-- This is the boggle board and where info is contained -->
+    <div id="boggle">    
+        <div class="gameContainer">        
+
+            <!-- This score divs where we keep track of scores  -->
+            
+            <div class="scores">
+                <div id="high-score">
+                    High Score: <span>{{highscore}}</span>
+                </div>
+                <div id="current-score">
+                    Score: <span id="c-score">00</span>
+                </div>
+            </div>
+
+            <!-- This where the boggle table is         -->
+
+            <table id="game">
+                <tbody>
+                    {%for row in board%}
+                    <tr>
+                        {%for cell in row%}
+                        <td class="pieces">
+                            <div id="inside"> {{cell}}</div>
+                        </td>
+                        {%endfor%}
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+
+            <!-- This where the timing and how many current words you have       -->
+
+            <div class="game-container-info">
+                <div class="game-info" id="time">
+                    Time:<span id = "timer"></span>
+                </div>
+                <div class="game-info">
+                   <button id="play-again">Play Again</button>
+                </div>
+            </div>
+
+        </div>
+    
+    <!-- This where we input words and write the words out   -->
+       
+        <div class="form-field-container">
+            <form action="" method="POST" id="word-input-form" autocomplete="off">
+                <label for="words-input" id="label-for-words-input">
+                    Type in the words that you find here
+                </label><br>
+                <input type="text" name="words-input" id ="words-input" >
+                <button id="submit-btn">
+                    Submit
+                </button>
+            
+                
+            </form>
+            <!-- This where we'll append correct words  -->
+            <div id="list">
+                <div id="message-container">
+                    <p class="message"></p>
+                </div>
+                <ul class="listed-words">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+{%endblock%}
